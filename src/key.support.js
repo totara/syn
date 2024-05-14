@@ -8,6 +8,7 @@ if (!syn.config.support) {
 		if (!document.body) {
 			return syn.schedule(checkForSupport, 1);
 		}
+		var activeElement = document.activeElement;
 
 		var div = document.createElement("div"),
 			checkbox, submit, form, anchor, textarea, inputter, one, doc;
@@ -79,6 +80,7 @@ if (!syn.config.support) {
 		syn.support.oninput = 'oninput' in one;
 
 		doc.removeChild(div);
+		syn.__tryFocus(activeElement);
 
 		syn.support.ready++;
 	})();
